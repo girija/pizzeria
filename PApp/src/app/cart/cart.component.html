@@ -1,0 +1,106 @@
+<div class="container-fluid">
+    <div class="row">
+        <aside class="col-lg-9">
+            <div class="card">
+                <div class="table-responsive overflow-auto" style="height:
+                    33rem;">
+                    <div *ngIf="pizzaData.length==0" class="alert alert-warning
+                        d-flex
+                        align-items-center justify-content-center
+                        font-weight-bold"
+                        style="width: 20rem;height: 10rem;margin: 10rem 0 0
+                        20rem;color: rgb(255, 255, 255);background-color:
+                        rgb(253, 199, 99);">No items
+                        in the cart</div>
+                    <table *ngIf="pizzaData.length!=0" class="table
+                        table-borderless
+                        table-shopping-cart overflow-auto">
+                        <thead class="text-muted">
+                            <tr class="small text-uppercase">
+                                <th scope="col">Pizaa Description</th>
+                                <th scope="col" width="120">Quantity</th>
+                                <th scope="col" width="120">Price</th>
+                                <th scope="col" class="text-right d-none
+                                    d-md-block" width="200"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let pizzaData of pizzaData">
+                                <td>
+                                    <figure class="itemside
+                                        align-items-center">
+                                        <div class="aside"><img
+                                                [src]="pizzaData.image"
+                                                class="img-sm"></div>
+                                        <figcaption class="info"> <a
+                                                href="#" class="title
+                                                text-dark" data-abc="true">{{pizzaData.name}}</a>
+                                            <p class="text-muted small">Type:
+                                                {{pizzaData.type}} <br> Size:
+                                                Large</p>
+                                        </figcaption>
+                                    </figure>
+                                </td>
+                                <td> <input type="number"
+                                        [value]="pizzaData.qty" name="quantity"
+                                        min="1" max="5"> </td>
+                                <td>
+                                    <div class="price-wrap"> <var
+                                            class="price text-muted"><i
+                                                class="fas fa-rupee-sign"></i>{{pizzaData.price}}</var>
+                                    </div>
+                                </td>
+                                <td class="text-right d-none d-md-block">
+                                    <div class="btn btn-light"
+                                        (click)="remove(pizzaData.id)">
+                                        Remove
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </aside>
+        <aside class="col-lg-3">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <form>
+                        <div class="form-group"> <label>Have coupon?</label>
+                            <div class="input-group"> <input type="text"
+                                    class="form-control coupon" name=""
+                                    placeholder="Coupon code"> <span
+                                    class="input-group-append"> <button
+                                        class="btn btn-warning btn-apply
+                                        coupon">Apply</button> </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <dl class="dlist-align">
+                        <dt>Total price:</dt>
+                        <dd class="text-right ml-3"><i class="fas
+                                fa-rupee-sign"></i>{{totalAmount}}</dd>
+                    </dl>
+                    <dl class="dlist-align">
+                        <dt>Discount:</dt>
+                        <dd class="text-right text-danger ml-3">0.00</dd>
+                    </dl>
+                    <dl class="dlist-align">
+                        <dt>Total:</dt>
+                        <dd class="text-right text-dark b ml-3"><strong><i
+                                    class="fas fa-rupee-sign"></i>{{totalAmount}}</strong></dd>
+                    </dl>
+                    <hr> <a href="#" class="btn btn-out btn-warning
+                        btn-square btn-main" data-abc="true"> Checkout
+                    </a> <a href="#" class="btn btn-out btn-success
+                        btn-square btn-main mt-2" data-abc="true">Continue
+                        Selecting Pizza</a>
+                </div>
+            </div>
+        </aside>
+    </div>
+</div>

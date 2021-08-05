@@ -1,0 +1,30 @@
+<div class="row m-1 p-1 overflow-auto" style="height: 37rem;">
+    <div class="col-6 mb-2" *ngFor="let pizza of pizzaData" style="border:
+        .1rem
+        outset;">
+        <div class="row">
+            <div class="col-4 p-1">
+                <div>{{pizza.name}}</div>
+                <div *ngIf="pizza.type=='veg';else elseBlock"><img
+                        src="../../assets/veg.png" width="20" height="20" /></div>
+                <ng-template #elseBlock><img
+                        src="../../assets/nonveg.png"
+                        width="20" height="20" /></ng-template>
+                <div style="padding-top: 1rem;"><i class="fas fa-rupee-sign"></i>{{pizza.price}}</div>
+            </div>
+            <div class="col-4 p-1">
+                <div>{{pizza.description}}</div>
+                <div style="padding-top: .5rem;"><b>Ingredients:</b>{{pizza.ingredients}}</div>
+                <div style="padding-top: .5rem;"><b>Toppings:</b>{{pizza.topping}}</div>
+            </div>
+            <div class="col-4 p-1" align="center">
+                <div>
+                    <img [src]="pizza.image" [alt]='pizza.name' width="120"
+                        height="90">
+                </div>
+                <div class="btn btn-warning" (click)="onAdd(pizza)">Add to
+                    cart</div>
+            </div>
+        </div>
+    </div>
+</div>
